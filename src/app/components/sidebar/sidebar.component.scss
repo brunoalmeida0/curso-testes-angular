@@ -1,0 +1,22 @@
+.mat-sidenav-container {
+    width: 100%;
+    height: 1000px;
+    .mat-sidenav {
+        width: 15vw;
+        .mat-card-image {
+            width: 15vw;
+        }
+        .mat-card-title {
+            font-weight: bold;
+        }
+    }
+    .mat-sidenav-content {
+        display: flex;
+        justify-content: center;
+        padding: 0 20px 0 20px;
+    }
+}
+
+.mat-sidenav {
+    background-color: #88D9E6;
+}
