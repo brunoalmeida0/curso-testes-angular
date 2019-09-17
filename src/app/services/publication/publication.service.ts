@@ -1,0 +1,13 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PublicationService {
+
+  constructor() { }
+
+  getPublicacoes() {
+    let publicacao = new 
+  }
+}
