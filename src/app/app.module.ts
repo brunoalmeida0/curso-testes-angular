@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DialogComentarioComponent } from './components/dialog-comentario/dialog-comentario.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { MaterialModule } from './material.module';
 
-import {MatIconModule, MatInputModule, MatFormFieldModule, MatButtonModule} from '@angular/material';
+import {MatIconModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDialogModule} from '@angular/material';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PublicationComponent } from './components/publication/publication.component';
+import { ComentarioComponent } from './pages/comentario/comentario.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +26,7 @@ import { PublicationService } from './services/publication/publication.service';
     SidebarComponent,
     PublicationComponent,
     LoginComponent,
-    DialogComentarioComponent
+    ComentarioComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,8 @@ import { PublicationService } from './services/publication/publication.service';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    MatDialogModule
   ],
   providers: [
     AuthService,

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { DialogComentarioComponent } from '../dialog-comentario/dialog-comentario.component';
 import { Publicacao } from '../../models/publicacao';
 import { PublicationService } from 'src/app/services/publication/publication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publication',
@@ -11,24 +10,21 @@ import { PublicationService } from 'src/app/services/publication/publication.ser
 })
 export class PublicationComponent implements OnInit {
 
+  publicacoes = new Array<Publicacao>();
+
   constructor(
-    public dialog: MatDialog,
-    public publicationService: PublicationService
+    public publicationService: PublicationService,
+    private router: Router
     ) { }
 
   ngOnInit() {
-    this.publicationService.getPublicacoes();
+    this.publicationService.getPublicacoes()
+      .subscribe(publicacoes => this.publicacoes = publicacoes);
   }
 
-  openDialogComentario(publicacao: Publicacao) {
-    const dialogRef = this.dialog.open(DialogComentarioComponent, {
-      width: '250px',
-      data: {publicacao}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  openComentario(publicacao: Publicacao) {
+    localStorage.setItem('idPublicacao', publicacao.id.toString());
+    this.router.navigate(['/comentario']);
   }
 
 }
