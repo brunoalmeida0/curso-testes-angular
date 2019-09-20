@@ -5,17 +5,19 @@ import { FormControl } from '@angular/forms';
 import { ComentarioService } from 'src/app/services/comentario/comentario.service';
 import { Comentario } from 'src/app/models/comentario';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
-  selector: 'app-comentario',
-  templateUrl: './comentario.component.html',
-  styleUrls: ['./comentario.component.scss']
+  selector: 'app-busca',
+  templateUrl: './busca.component.html',
+  styleUrls: ['./busca.component.scss']
 })
-export class ComentarioComponent implements OnInit {
+export class BuscaComponent implements OnInit {
 
   comentarioFormControl = new FormControl('');
-
   publicacao: Publicacao;
+  busca: string;
+  usuarios: Array<Usuario>;
 
   constructor(
     private publicacaoService: PublicationService,
@@ -24,24 +26,16 @@ export class ComentarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPublicacao();
+    this.busca = localStorage.getItem('busca');
+    this.buscarUsuarios();
   }
 
-  getPublicacao() {
-    const idPublicacao: string = localStorage.getItem('idPublicacao');
-    this.publicacaoService.findById(+idPublicacao)
-      .subscribe(publicacao => {
-        this.publicacao = publicacao;
-        console.log(this.publicacao);
+  buscarUsuarios() {
+    this.usuarioService.buscarUsuarios(this.busca)
+      .subscribe(usuarios => {
+        this.usuarios = usuarios;
       });
   }
 
-  comentar() {
-    const comentario = new Comentario();
-    comentario.data = new Date();
-    comentario.conteudo = this.comentarioFormControl.value;
-    comentario.usuario =  this.usuarioService.getUsuarioAtual();
-    this.comentarioService.adicionarComentario(comentario, this.publicacao);
-  }
 
 }

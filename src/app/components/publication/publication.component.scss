@@ -1,13 +1,15 @@
+.postar-publicacao-input {
+    width: 65vw;
+    margin: 10px;
+}
+
 .publication {
     //background-color: #C5D5EA;
     background-color: #fff;
     border-radius: 5px;
-    margin: 20px;
-    padding: 25px;
     .btn_actions_post {
         background-color: #fff;
         border: none;
-        margin: 10px;
         cursor: pointer;
     }
 }

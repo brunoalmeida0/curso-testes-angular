@@ -17,6 +17,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import { AuthService } from './services/auth/auth.service';
 import { PublicationService } from './services/publication/publication.service';
+import { ComentarioService } from './services/comentario/comentario.service';
+import { UsuarioService } from './services/usuario/usuario.service';
+import { BuscaComponent } from './pages/busca/busca.component';
+import { CardBuscaComponent } from './components/card-busca/card-busca.component';
+import { PerfilAmigoComponent } from './pages/perfil-amigo/perfil-amigo.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,10 @@ import { PublicationService } from './services/publication/publication.service';
     SidebarComponent,
     PublicationComponent,
     LoginComponent,
-    ComentarioComponent
+    ComentarioComponent,
+    BuscaComponent,
+    CardBuscaComponent,
+    PerfilAmigoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,9 @@ import { PublicationService } from './services/publication/publication.service';
   providers: [
     AuthService,
     ToasterService,
-    PublicationService
+    PublicationService,
+    ComentarioService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

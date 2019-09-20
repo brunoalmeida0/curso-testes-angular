@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Publicacao } from '../../models/publicacao';
 import { PublicationService } from 'src/app/services/publication/publication.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-publication',
@@ -11,20 +13,35 @@ import { Router } from '@angular/router';
 export class PublicationComponent implements OnInit {
 
   publicacoes = new Array<Publicacao>();
-
+  publicacaoFormControl = new FormControl('');
+  
   constructor(
-    public publicationService: PublicationService,
+    private publicacaoService: PublicationService,
+    private usuarioService: UsuarioService,
     private router: Router
     ) { }
 
   ngOnInit() {
-    this.publicationService.getPublicacoes()
+    this.publicacaoService.getPublicacoes()
       .subscribe(publicacoes => this.publicacoes = publicacoes);
   }
 
   openComentario(publicacao: Publicacao) {
     localStorage.setItem('idPublicacao', publicacao.id.toString());
     this.router.navigate(['/comentario']);
+  }
+
+  curtir(publicacao: Publicacao) {
+    this.publicacaoService.curtirPublicacao(publicacao);
+  }
+
+  publicar() {
+    const publicacao = new Publicacao();
+    publicacao.id = 1;
+    publicacao.usuario = this.usuarioService.getUsuarioAtual();
+    publicacao.hora = new Date();
+    publicacao.conteudo = this.publicacaoFormControl.value;
+    this.publicacaoService.criarPublicacao(publicacao);
   }
 
 }

@@ -8,24 +8,24 @@ import { Usuario } from 'src/app/models/usuario';
   providedIn: 'root'
 })
 export class PublicationService {
-
+  
+  publicacoes = new Array<Publicacao>();
   constructor() { }
 
   getPublicacoes(): Observable<Array<Publicacao>> {
-    const publicacoes = new Array<Publicacao>();
     const publicacao = new Publicacao();
 
     const comentario = new Comentario();
     const usuario = new Usuario();
     usuario.id = 1;
     usuario.nome = 'User Teste';
-    usuario.foto = 'sem foto';
+    usuario.foto = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
     usuario.senha = '123465';
     usuario.email = 'email@teste.com';
 
     comentario.id = 1;
     comentario.conteudo = 'conteúdo teste';
-    comentario.hora = new Date();
+    comentario.data = new Date();
     comentario.usuario = usuario;
 
     publicacao.id = 1;
@@ -35,11 +35,11 @@ export class PublicationService {
     publicacao.curtidas = 2;
     publicacao.usuario = usuario;
 
-    publicacoes.push(publicacao);
-    publicacoes.push(publicacao);
-    publicacoes.push(publicacao);
+    this.publicacoes.push(publicacao);
+    this.publicacoes.push(publicacao);
+    this.publicacoes.push(publicacao);
 
-    return of(publicacoes);
+    return of(this.publicacoes);
   }
 
   findById(id: number): Observable<Publicacao> {
@@ -49,13 +49,13 @@ export class PublicationService {
     const usuario = new Usuario();
     usuario.id = 1;
     usuario.nome = 'User Teste';
-    usuario.foto = 'sem foto';
+    usuario.foto = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
     usuario.senha = '123465';
     usuario.email = 'email@teste.com';
 
     comentario.id = 1;
     comentario.conteudo = 'conteúdo teste';
-    comentario.hora = new Date();
+    comentario.data = new Date();
     comentario.usuario = usuario;
 
     publicacao.id = 1;
@@ -66,4 +66,14 @@ export class PublicationService {
     publicacao.usuario = usuario;
     return of(publicacao);
   }
+
+  curtirPublicacao(publicacao: Publicacao) {
+    publicacao.curtidas++;
+    //persistir
+  }
+
+  criarPublicacao(publicacao: Publicacao) {
+    this.publicacoes.push(publicacao);
+  }
+
 }

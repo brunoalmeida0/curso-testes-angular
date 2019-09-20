@@ -4,5 +4,6 @@ export class Comentario {
     id: number;
     usuario: Usuario;
     conteudo: string;
-    hora: Date;
+    data: Date;
+    curtidas: number;
 }

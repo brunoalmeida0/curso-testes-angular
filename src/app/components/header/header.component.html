@@ -1,5 +1,12 @@
 <mat-toolbar>
     <mat-toolbar-row>
         <span>Rede Social</span>
+        <span class="sair"><button mat-button (click)="sair()">Sair</button></span>
+        <form class="input-pesquisa">
+            <mat-form-field class="pesquisar-input">
+                <input matInput placeholder="Buscar Contato" [formControl]="buscarContatoFormControl">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="buscarContato()">Buscar</button>
+        </form>
     </mat-toolbar-row>
 </mat-toolbar>

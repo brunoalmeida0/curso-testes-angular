@@ -10,9 +10,19 @@
 html,
 body {
     height: 100%;
+    background-color: #efefef;
 }
 
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-card-publicacao {
+    margin: 10px;
+    min-width: 70vw;
+}
+
+.img-card {
+    width: 50px;
 }
