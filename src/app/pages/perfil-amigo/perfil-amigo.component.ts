@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Publicacao } from 'src/app/models/publicacao';
+import { PublicationService } from 'src/app/services/publication/publication.service';
 
 @Component({
   selector: 'app-perfil-amigo',
@@ -14,20 +16,27 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class PerfilAmigoComponent implements OnInit {
 
   usuario: Usuario;
+  publicacoes: Array<Publicacao>;
 
   constructor(
     private usuarioService: UsuarioService,
+    private publicacaoService: PublicationService,
     private authService: AuthService,
     private router: Router
     ) { }
 
   ngOnInit() {
+    this.buscarUsuario();
   }
 
   buscarUsuario(): void {
     const idUsuario = localStorage.getItem('idUsuario');
     this.usuarioService.buscarUsuarioPorId(+idUsuario)
-      .subscribe(usuario => this.usuario = usuario);
+      .subscribe(usuario => {
+        this.usuario = usuario;
+        this.publicacaoService.buscarPublicacaoPorIdUsuario(this.usuario.id)
+          .subscribe(publicacoes => this.publicacoes = publicacoes);
+      });
 
   }
 

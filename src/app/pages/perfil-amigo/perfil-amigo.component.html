@@ -4,6 +4,14 @@
             <div mat-card-avatar class="example-header-image"><img class="img-card" [src]="usuario.foto" alt=""></div>
             <mat-card-title>{{ usuario.nome }}</mat-card-title>
         </mat-card-header>
+    </mat-card>
+
+    <mat-card class="comentario mat-card-publicacao" *ngFor="let publicacao of publicacoes">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"><img class="img-card" [src]="publicacao.usuario.foto" alt=""></div>
+            <mat-card-title>{{ publicacao.usuario.nome }}</mat-card-title>
+            <mat-card-subtitle>{{ publicacao.data | date }}</mat-card-subtitle>
+        </mat-card-header>
         <mat-card-content>
             <p>
                 {{ publicacao.conteudo }}
@@ -14,25 +22,4 @@
         </mat-card-actions>
     </mat-card>
 
-    <mat-card class="comentario mat-card-publicacao" *ngFor="let comentario of publicacao.comentarios">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"><img class="img-card" [src]="comentario.usuario.foto" alt=""></div>
-            <mat-card-title>{{ comentario.usuario.nome }}</mat-card-title>
-            <mat-card-subtitle>{{ comentario.data | date }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-                {{ comentario.conteudo }}
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button class="btn_actions_post"><mat-icon class="example-icon">thumb_up</mat-icon> {{ comentario.curtidas }}</button>
-        </mat-card-actions>
-    </mat-card>
-    <form class="input-comentario">
-        <mat-form-field>
-            <input matInput placeholder="Insira aqui o seu comentário" [formControl]="comentarioFormControl">
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="comentar()">Comentar</button>
-    </form>
 </div>

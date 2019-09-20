@@ -76,4 +76,8 @@ export class PublicationService {
     this.publicacoes.push(publicacao);
   }
 
+  buscarPublicacaoPorIdUsuario(idUsuario): Observable<Array<Publicacao>> {
+    return this.getPublicacoes();
+  }
+
 }
