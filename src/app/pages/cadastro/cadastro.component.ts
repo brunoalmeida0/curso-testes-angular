@@ -39,7 +39,7 @@ export class CadastroComponent implements OnInit {
     usuario.email = this.emailFormControl.value;
     usuario.senha = this.senhaFormControl.value;
     usuario.githubUser = this.githubFormControl.value;
-    this.usuarioService.salvarUsuario(usuario)
+    this.usuarioService.novoUsuario(usuario)
       .subscribe(_ => this.router.navigate(['/login']));
 
   }

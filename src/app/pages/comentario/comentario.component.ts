@@ -29,7 +29,7 @@ export class ComentarioComponent implements OnInit {
 
   getPublicacao() {
     const idPublicacao: string = localStorage.getItem('idPublicacao');
-    this.publicacaoService.findById(+idPublicacao)
+    this.publicacaoService.buscarPublicacao(+idPublicacao)
       .subscribe(publicacao => {
         this.publicacao = publicacao;
         console.log(this.publicacao);
@@ -37,12 +37,15 @@ export class ComentarioComponent implements OnInit {
   }
 
   comentar() {
-    const comentario = new Comentario();
-    comentario.data = new Date();
-    comentario.conteudo = this.comentarioFormControl.value;
-    comentario.usuario =  this.usuarioService.getUsuarioAtual();
-    comentario.publicacao = this.publicacao.id;
-    this.comentarioService.addComments(comentario);
+    this.usuarioService.buscarUsuarioPorId(1)
+    .subscribe(usuario => {
+      const comentario = new Comentario();
+      comentario.data = new Date();
+      comentario.conteudo = this.comentarioFormControl.value;
+      comentario.usuario = usuario;
+      comentario.publicacao = this.publicacao.id;
+      this.comentarioService.addComments(comentario);
+    });
   }
 
   // curtir(comentario: Comentario) {

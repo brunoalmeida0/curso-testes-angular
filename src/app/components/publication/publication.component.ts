@@ -14,7 +14,7 @@ export class PublicationComponent implements OnInit {
 
   publicacoes = new Array<Publicacao>();
   publicacaoFormControl = new FormControl('');
-  
+
   constructor(
     private publicacaoService: PublicationService,
     private usuarioService: UsuarioService,
@@ -36,12 +36,15 @@ export class PublicationComponent implements OnInit {
   }
 
   publicar() {
-    const publicacao = new Publicacao();
-    publicacao.id = 1;
-    publicacao.usuario = this.usuarioService.getUsuarioAtual();
-    publicacao.hora = new Date();
-    publicacao.conteudo = this.publicacaoFormControl.value;
-    this.publicacaoService.criarPublicacao(publicacao);
+    this.usuarioService.buscarUsuarioPorId(1)
+    .subscribe(usuario => {
+      const publicacao = new Publicacao();
+      publicacao.usuario = usuario;
+      publicacao.hora = new Date();
+      publicacao.conteudo = this.publicacaoFormControl.value;
+      this.publicacaoService.novaPublicacao(publicacao)
+        .subscribe(publicacaoSalva => this.publicacoes.push(publicacaoSalva));
+    }, err => console.log(err));
   }
 
 }

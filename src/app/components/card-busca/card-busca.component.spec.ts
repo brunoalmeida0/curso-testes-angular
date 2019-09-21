@@ -16,7 +16,7 @@ describe('CardBuscaComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         AppModule,
-        RouterTestingModule.withRoutes([]),
+        RouterTestingModule.withRoutes([])
        ]
     })
     .compileComponents();
@@ -27,6 +27,10 @@ describe('CardBuscaComponent', () => {
     router = TestBed.get(Router);
     component = fixture.componentInstance;
     component.usuario = new Usuario();
+    component.usuario.id = 1;
+    component.usuario.nome = 'User Test';
+    component.usuario.senha = '123456';
+    component.usuario.email = 'usertest@gmail.com';
     fixture.detectChanges();
   });
 
@@ -38,7 +42,6 @@ describe('CardBuscaComponent', () => {
   it('verPerfil deve setar o id do usuário no localStorage e navegar para perfil-amigo', () => {
     const navigateSpy = spyOn(router, 'navigate');
     component.verPerfil(1);
-    expect(localStorage.length).toBe(1);
     expect(localStorage.getItem('idUsuario')).toBe('1');
     expect(navigateSpy).toHaveBeenCalledWith(['/perfil-amigo']);
   });
@@ -53,12 +56,26 @@ describe('CardBuscaComponent', () => {
     const navigateSpy = spyOn(router, 'navigate');
     const buttonNavegar = fixture.debugElement.nativeElement.querySelector('#card-usuario');
     buttonNavegar.click();
-    expect(localStorage.length).toBe(1);
     expect(localStorage.getItem('idUsuario')).toBe('1');
     expect(navigateSpy).toHaveBeenCalledWith(['/perfil-amigo']);
   });
 
-  // if('Imagem do usuário deve aparecer se o usuário')
+  it('Imagem do usuário deve aparecer se o usuário tiver foto', () => {
+    component.usuario.foto = 'foto.png';
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.img-card').src).toContain('foto.png');
+  });
+
+  it('Conteudo do card deve conter o nome do usuário', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.mat-card-title').textContent).toContain(component.usuario.nome);
+  });
+
+  afterEach(() => {
+    localStorage.removeItem('idUsuario');
+  });
+
   // TESTES DE CSS
 
 });
