@@ -21,7 +21,6 @@ export class PerfilAmigoComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private publicacaoService: PublicationService,
-    private authService: AuthService,
     private router: Router
     ) { }
 

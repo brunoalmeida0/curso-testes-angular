@@ -56,16 +56,15 @@ describe('PublicationComponent', () => {
     expect(navigateSpy).toHaveBeenCalledWith(['/comentario']);
   });
 
-  it('publicar deve publicar uma nova publicação com o usuário atual', () => {
+  it('publicar deve publicar uma nova publicação com o usuário atual', async(() => {
     const usuario = UsuarioTestBuilder.criarUsuario();
     const publicacao = PostTestBuilder.criarPost();
     component.publicacaoFormControl.setValue('Conteudo da publicação para testar');
     usuarioService.buscarUsuarioPorId.and.returnValue(of(usuario));
     publicationService.novaPublicacao.and.returnValue(of(publicacao));
-    fixture.whenStable().then(_ => {
-      expect(component.publicacoes[0]).toBe(publicacao);
+    component.publicar();
+    fixture.whenStable().then(() => {
+      expect(component.publicacoes.includes(publicacao)).toBeTruthy();
     });
-  })
-
-
+  }));
 });

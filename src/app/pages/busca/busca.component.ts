@@ -20,8 +20,6 @@ export class BuscaComponent implements OnInit {
   usuarios: Array<Usuario>;
 
   constructor(
-    private publicacaoService: PublicationService,
-    private comentarioService: ComentarioService,
     private usuarioService: UsuarioService
   ) { }
 
@@ -34,7 +32,7 @@ export class BuscaComponent implements OnInit {
     this.usuarioService.buscarUsuarios(this.busca)
       .subscribe(usuarios => {
         this.usuarios = usuarios;
-      });
+      }, err => console.log(err));
   }
 
 

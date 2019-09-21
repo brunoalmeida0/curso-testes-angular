@@ -40,12 +40,13 @@ export class CadastroComponent implements OnInit {
     usuario.senha = this.senhaFormControl.value;
     usuario.githubUser = this.githubFormControl.value;
     this.usuarioService.novoUsuario(usuario)
-      .subscribe(_ => this.router.navigate(['/login']));
+      .subscribe(_ => this.router.navigate(['/login']),
+      err => console.error(err));
 
   }
 
   cancelar() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
 }
