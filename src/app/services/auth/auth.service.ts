@@ -14,8 +14,7 @@ export class AuthService {
   constructor(
     private usuarioService: UsuarioService
   ) {
-    this.usuarioService.buscarUsuarioPorId(1)
-    .subscribe(usuario => this.usuarioAtual = usuario);
+    this.usuarioAtual = this.usuarioService.getUsuarioAtual();
   }
 
   login(login: string, senha: string): boolean {
@@ -31,3 +30,4 @@ export class AuthService {
     this.mostrarMenuEmitter.emit(false);
   }
 }
+

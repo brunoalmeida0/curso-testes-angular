@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   entrar() {
-    const logou: boolean = this.authService.login(this.emailFormControl.value, this.passwordFormControl.value);
+    const logou = this.authService.login(this.emailFormControl.value, this.passwordFormControl.value)
 
     logou ? this.router.navigate(['/feed']) : console.error('Login ou senha inválidos');
   }

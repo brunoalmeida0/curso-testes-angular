@@ -23,6 +23,7 @@ import { BuscaComponent } from './pages/busca/busca.component';
 import { CardBuscaComponent } from './components/card-busca/card-busca.component';
 import { PerfilAmigoComponent } from './pages/perfil-amigo/perfil-amigo.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
     MatFormFieldModule,
     MatButtonModule,
     ToasterModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,

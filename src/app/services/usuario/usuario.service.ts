@@ -3,25 +3,30 @@ import { Observable, of } from 'rxjs';
 import { Publicacao } from 'src/app/models/publicacao';
 import { Comentario } from 'src/app/models/comentario';
 import { Usuario } from 'src/app/models/usuario';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  url = 'http://localhost:8080/socialnet/api/';
+  constructor() { }
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  getUsuarioAtual(): Usuario {
+    const usuario = new Usuario();
+    usuario.id = 1;
+    usuario.nome = 'Rafael';
+    usuario.email = 'teste@teste.com';
+    usuario.foto = 'https://blog.dankicode.com/wp-content/uploads/2018/04/como-ser-um-bom-programador.png';
+    usuario.senha = '123456';
+    return usuario;
+  }
 
   buscarUsuarios(busca: string): Observable<Array<Usuario>> {
     const usuarios = new Array<Usuario>();
     const usuario = new Usuario();
     usuario.id = 2;
-    usuario.nome = 'Fila';
-    usuario.email = 'fila@deunidade.com';
+    usuario.nome = 'Matheus';
+    usuario.email = 'matheus@teste.com';
     usuario.senha = '123456';
     usuario.foto = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
     if (busca.toLowerCase() === usuario.nome.toLowerCase()) {
@@ -32,11 +37,13 @@ export class UsuarioService {
   }
 
   buscarUsuarioPorId(idUsuario: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.url}users/find/${idUsuario}`);
-  }
-
-  novoUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(`${this.url}users/add`, usuario);
+    const usuario = new Usuario();
+    usuario.id = 2;
+    usuario.nome = 'João';
+    usuario.email = 'joao@teste.com';
+    usuario.senha = '123456';
+    usuario.foto = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+    return of(usuario);
   }
 
 }

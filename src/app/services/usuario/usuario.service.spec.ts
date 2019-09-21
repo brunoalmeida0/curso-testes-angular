@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { UsuarioService } from './usuario.service';
 
-describe('AuthService', () => {
+describe('UsuarioService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

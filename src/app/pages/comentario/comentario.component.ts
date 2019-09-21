@@ -29,7 +29,7 @@ export class ComentarioComponent implements OnInit {
 
   getPublicacao() {
     const idPublicacao: string = localStorage.getItem('idPublicacao');
-    this.publicacaoService.buscarPublicacao(+idPublicacao)
+    this.publicacaoService.findById(+idPublicacao)
       .subscribe(publicacao => {
         this.publicacao = publicacao;
         console.log(this.publicacao);
@@ -44,7 +44,7 @@ export class ComentarioComponent implements OnInit {
       comentario.conteudo = this.comentarioFormControl.value;
       comentario.usuario = usuario;
       comentario.publicacao = this.publicacao.id;
-      this.comentarioService.addComments(comentario);
+      this.comentarioService.adicionarComentario(comentario, this.publicacao);
     });
   }
 

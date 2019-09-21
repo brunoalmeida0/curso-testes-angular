@@ -42,8 +42,7 @@ export class PublicationComponent implements OnInit {
       publicacao.usuario = usuario;
       publicacao.hora = new Date();
       publicacao.conteudo = this.publicacaoFormControl.value;
-      this.publicacaoService.novaPublicacao(publicacao)
-        .subscribe(publicacaoSalva => this.publicacoes.push(publicacaoSalva));
+      this.publicacaoService.criarPublicacao(publicacao);
     }, err => console.log(err));
   }
 

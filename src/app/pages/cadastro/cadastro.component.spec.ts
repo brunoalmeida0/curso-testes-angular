@@ -63,7 +63,7 @@ describe('CadastroComponent', () => {
     inputSenha.dispatchEvent(new Event('input'));
 
     const usuario = UsuarioTestBuilder.criarUsuario();
-    usuarioService.novoUsuario.and.returnValue(of(usuario));
+    // usuarioService.getUsuarioAtual.and.returnValue(usuario);
 
     btnCadastrar.dispatchEvent(new Event('click'));
     fixture.whenStable().then(() => {

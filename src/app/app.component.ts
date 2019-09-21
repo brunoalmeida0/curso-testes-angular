@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
+import { Usuario } from './models/usuario';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,15 @@ import { AuthService } from './services/auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  mostrarMenu = true; //TODO Mudar para false
+  mostrarMenu = false;
+  usuarioAtual: Usuario;
 
   constructor(
     private authService: AuthService
   ) { }
 
     ngOnInit(): void {
+      this.usuarioAtual = this.authService.usuarioAtual;
       this.authService.mostrarMenuEmitter.subscribe(
         mostrarMenu => this.mostrarMenu = mostrarMenu
       );

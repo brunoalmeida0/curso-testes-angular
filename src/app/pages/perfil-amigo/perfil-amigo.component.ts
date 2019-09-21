@@ -33,8 +33,7 @@ export class PerfilAmigoComponent implements OnInit {
     this.usuarioService.buscarUsuarioPorId(+idUsuario)
       .subscribe(usuario => {
         this.usuario = usuario;
-        this.publicacaoService.buscarPublicacaoPorIdUsuario(this.usuario.id)
-          .subscribe(publicacoes => this.publicacoes = publicacoes);
+        this.publicacaoService.findById(this.usuario.id);
       });
   }
 
