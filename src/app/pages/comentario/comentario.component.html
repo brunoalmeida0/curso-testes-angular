@@ -27,7 +27,7 @@
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button class="btn_actions_post"><mat-icon class="example-icon">thumb_up</mat-icon> {{ comentario.curtidas }}</button>
+            <button mat-button class="btn_actions_post" (click)="curtir(comentario)"><mat-icon class="example-icon">thumb_up</mat-icon> {{ comentario.curtidas }}</button>
         </mat-card-actions>
     </mat-card>
     <form class="input-comentario">

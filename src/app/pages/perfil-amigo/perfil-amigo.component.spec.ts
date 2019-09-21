@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AppModule } from '../../app.module';
 import { PerfilAmigoComponent } from './perfil-amigo.component';
 
 describe('PerfilAmigoComponent', () => {
@@ -8,7 +9,7 @@ describe('PerfilAmigoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PerfilAmigoComponent ]
+      imports: [ AppModule ]
     })
     .compileComponents();
   }));

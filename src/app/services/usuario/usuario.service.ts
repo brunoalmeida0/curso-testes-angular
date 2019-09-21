@@ -46,4 +46,9 @@ export class UsuarioService {
     return of(usuario);
   }
 
+  salvarUsuario(usuario: Usuario): Observable<Usuario> {
+    return of(usuario);
+    //TODO implementar usuário
+  }
+
 }

@@ -41,4 +41,8 @@ export class LoginComponent implements OnInit {
     logou ? this.router.navigate(['/feed']) : this.toasterService.pop('error', 'Login ou senha inválidos');
   }
 
+  cadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
 }

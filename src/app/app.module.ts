@@ -22,6 +22,8 @@ import { UsuarioService } from './services/usuario/usuario.service';
 import { BuscaComponent } from './pages/busca/busca.component';
 import { CardBuscaComponent } from './components/card-busca/card-busca.component';
 import { PerfilAmigoComponent } from './pages/perfil-amigo/perfil-amigo.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PerfilAmigoComponent } from './pages/perfil-amigo/perfil-amigo.componen
     ComentarioComponent,
     BuscaComponent,
     CardBuscaComponent,
-    PerfilAmigoComponent
+    PerfilAmigoComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

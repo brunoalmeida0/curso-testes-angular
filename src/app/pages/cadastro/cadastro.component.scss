@@ -1,0 +1,14 @@
+.form-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    .mat-form-field {
+        width: 40vw;
+    }
+    button {
+        margin: 10px;
+        width: 40vw;
+    }
+}

@@ -31,4 +31,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/busca']);
   }
 
+  home() {
+    this.router.navigate(['/feed']);
+  }
+
 }

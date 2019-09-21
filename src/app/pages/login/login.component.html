@@ -11,12 +11,12 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Senha" [formControl]="passwordFormControl">
+            <input matInput type="password" placeholder="Senha" [formControl]="passwordFormControl">
             <mat-error *ngIf="passwordFormControl.hasError('required')">
                 Senha é <strong>obrigatória</strong>
             </mat-error>
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="entrar()">Entrar</button>
-        <button mat-raised-button>Cadastre-se</button>
+        <button mat-raised-button (click)="cadastro()">Cadastre-se</button>
     </form>
 </div>

@@ -4,4 +4,5 @@ export class Usuario {
     foto: string;
     email: string;
     senha: string;
+    githubUser: string;
 }

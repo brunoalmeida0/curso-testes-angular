@@ -41,7 +41,12 @@ export class ComentarioComponent implements OnInit {
     comentario.data = new Date();
     comentario.conteudo = this.comentarioFormControl.value;
     comentario.usuario =  this.usuarioService.getUsuarioAtual();
-    this.comentarioService.adicionarComentario(comentario, this.publicacao);
+    comentario.publicacao = this.publicacao.id;
+    this.comentarioService.addComments(comentario);
   }
+
+  // curtir(comentario: Comentario) {
+  //   this.comentarioService.curtirComentario(comentario);
+  // }
 
 }

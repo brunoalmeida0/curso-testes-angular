@@ -1,9 +1,11 @@
-<form class="input-comentario">
-    <mat-form-field class="postar-publicacao-input">
-        <input matInput placeholder="Insira aqui sua publicação" [formControl]="publicacaoFormControl">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="publicar()">Publicar</button>
-</form>
+<mat-card class="publication mat-card-publicacao">
+    <form class="input-comentario">
+        <mat-form-field class="postar-publicacao-input">
+            <input matInput placeholder="Insira aqui sua publicação" [formControl]="publicacaoFormControl">
+        </mat-form-field>
+        <button mat-stroked-button (click)="publicar()">Publicar</button>
+    </form>
+</mat-card>
 
 <mat-card class="publication mat-card-publicacao" *ngFor="let publicacao of publicacoes">
     <mat-card-header>

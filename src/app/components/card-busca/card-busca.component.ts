@@ -19,6 +19,7 @@ export class CardBuscaComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    // this.usuario = new Usuario();
   }
 
   verPerfil(idUsuario: number) {

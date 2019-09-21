@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 
@@ -9,6 +9,8 @@ export class AuthService {
 
   usuarioAtual: Usuario;
 
+  mostrarMenuEmitter = new EventEmitter<boolean>();
+
   constructor(
     private usuarioService: UsuarioService
   ) {
@@ -17,12 +19,14 @@ export class AuthService {
 
   login(login: string, senha: string): boolean {
     if (login === this.usuarioAtual.email && senha === this.usuarioAtual.senha) {
+      this.mostrarMenuEmitter.emit(true);
       return true;
     }
+    this.mostrarMenuEmitter.emit(false);
     return false;
   }
 
   logoff() {
-    this.usuarioAtual = null;
+    this.mostrarMenuEmitter.emit(false);
   }
 }

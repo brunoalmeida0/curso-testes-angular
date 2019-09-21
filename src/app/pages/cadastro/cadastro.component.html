@@ -1,0 +1,33 @@
+<div>
+    <form class="form-cadastro">
+        <mat-form-field>
+            <input matInput placeholder="Nome Completo" required [formControl]="nomeFormControl">
+            <mat-error *ngIf="nomeFormControl.hasError('required')">
+                Nome é <strong>Obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Login no GitHub" [formControl]="githubFormControl">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email" required [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Por favor, digite um e-mail válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email é <strong>Obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="password" required placeholder="Senha" [formControl]="senhaFormControl">
+            <mat-error *ngIf="senhaFormControl.hasError('required')">
+                Senha é <strong>obrigatória</strong>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="cadastrar()">Cadastre-se</button>
+        <button mat-raised-button (click)="cancelar()">Cancelar</button>
+    </form>
+</div>

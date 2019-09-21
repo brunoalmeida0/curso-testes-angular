@@ -6,4 +6,5 @@ export class Comentario {
     conteudo: string;
     data: Date;
     curtidas: number;
+    publicacao: number;
 }

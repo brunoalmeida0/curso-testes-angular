@@ -1,9 +1,17 @@
-.mat-toolbar {
+.mat-toolbar-row {
     background-color: #d55845;
-    .span {
-        font-size: 30px !important;
-        .sair {
-            right: 0;
+    display: flex;
+    justify-content: space-between;
+    .titulo {
+        cursor: pointer;
+    }
+    .mat-form-field {
+        margin-right: 10px;
+        font-size: 15px;
+        .span {
+            .sair {
+                right: 0;
+            }
         }
     }
 }

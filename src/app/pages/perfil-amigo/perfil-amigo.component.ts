@@ -37,7 +37,15 @@ export class PerfilAmigoComponent implements OnInit {
         this.publicacaoService.buscarPublicacaoPorIdUsuario(this.usuario.id)
           .subscribe(publicacoes => this.publicacoes = publicacoes);
       });
+  }
 
+  curtir(publicacao: Publicacao) {
+    this.publicacaoService.curtirPublicacao(publicacao);
+  }
+
+  openComentario(publicacao: Publicacao) {
+    localStorage.setItem('idPublicacao', publicacao.id.toString());
+    this.router.navigate(['/comentario']);
   }
 
 

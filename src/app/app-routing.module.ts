@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ComentarioComponent } from './pages/comentario/comentario.component';
 import { BuscaComponent } from './pages/busca/busca.component';
 import { PerfilAmigoComponent } from './pages/perfil-amigo/perfil-amigo.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'comentario', component: ComentarioComponent},
   {path: 'busca', component: BuscaComponent},
-  {path: 'perfil-amigo', component: PerfilAmigoComponent}
+  {path: 'perfil-amigo', component: PerfilAmigoComponent},
+  {path: 'cadastro', component: CadastroComponent},
+  {path: '', component: LoginComponent},
 ];
 
 @NgModule({
